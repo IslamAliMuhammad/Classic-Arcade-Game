@@ -56,8 +56,9 @@ Player.prototype.reset = function() {
 Player.prototype.handleInput = function (pressedKey) {
     switch (pressedKey) {
         case 'up':
-            if (this.y == -40) {
-                this.y = -40;
+            if (this.y == 50) {
+                this.y -= this.speed;
+                setTimeout(gameWon, 250);
             } else {
                 this.y -= this.speed;
             }
@@ -116,5 +117,9 @@ function restartGame() {
         new Enemy(5,50 + Math.random()*280,70 + Math.random()*100),
         new Enemy(5,50 + Math.random()*300,70 + Math.random()*100),
         );
+}
+function gameWon() {
+    window.alert('Good job');
+    player.reset();
 }
 restartGame();
